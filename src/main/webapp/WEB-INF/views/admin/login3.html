@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta http-equiv="Expires" content="0"> 
+<title>后台管理</title>
+<link href="style/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="style/js/jquery.js"></script>
+<script type="text/javascript">
+        function login(){
+            $.ajax({
+                url:"submit.do",//发送请求（提交或读取数据）的地址
+                dataType:"JSON",//预期服务器返回数据的类型
+                type:"POST",//请求方式
+                data:{username:$('#username').val(),password:$('#password').val()},
+                success:function(data){},
+                error:function(){}
+            });
+        }
+</script>
+
+</head>
+
+<body>
+<div class="login_box">
+      <div class="login_l_img"><img src="style/images/login-img.png" /></div>
+      <div class="login">
+          <div class="login_logo"><a href="#"><img src="style/images/login_logo.png" /></a></div>
+          <div class="login_name">
+               <p>后台管理系统</p>
+          </div>
+          <form id="loginForm">
+              <input id="username" name="username" type="text"  value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}">
+              <span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();" >密码</span>
+              <input id="password" name="password" type="password" id="password" style="display:none;" onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};"/>
+              <input value="登录" style="width:100%;" type="button" id="loginButton" onclick="login2()">
+          </form>
+      </div>
+      <div class="copyright">张赛个人版权所有©2020-08-08 技术支持电话：15601758309</div>
+</div>
+<div style="text-align:center;">
+</div>
+</body>
+</html>
