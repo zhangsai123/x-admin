@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = {""})
 
-
+//用于测试进行提交的
 public class DefaultController {
     @RequestMapping(value = "/login.html")
     public String login(){
