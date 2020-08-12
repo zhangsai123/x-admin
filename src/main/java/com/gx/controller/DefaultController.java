@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = {""})
 
-//这是今天第7次提交的代码
+//这是今天第8次提交的代码
 public class DefaultController {
     @RequestMapping(value = "/login.html")
     public String login(){
