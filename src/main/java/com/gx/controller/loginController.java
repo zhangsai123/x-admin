@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 /**
- * @Auther: Zhangsai
- * @Date: 2020/08/09/23:58
- * @Description:
+ *
+ * @author : Zhangsai
+ * @Date : 2020/08/09/23:58
+ * @Description :
  */
 @Controller
 public class loginController {
@@ -21,7 +22,7 @@ public class loginController {
       String username = request.getParameter("username");
       String password = request.getParameter("password");
       System.out.println("用户名是："+username +"\t密码是："+password);
-      HashMap<String, String> mesg = new HashMap<>();
+      HashMap<String, String> mesg = new HashMap<String, String>();
       mesg.put("mesg","登入成功");
       return mesg;
     }
