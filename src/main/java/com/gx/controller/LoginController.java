@@ -15,12 +15,13 @@ import java.util.HashMap;
  * @Description :
  */
 @Controller
-public class loginController {
+public class LoginController {
     @RequestMapping(value = "/submit.action",method = RequestMethod.POST)
     @ResponseBody
     public Object submit(HttpServletRequest request){
       String username = request.getParameter("username");
       String password = request.getParameter("password");
+      request.getSession().setAttribute("user",username);
       System.out.println("用户名是："+username +"\t密码是："+password);
       HashMap<String, String> mesg = new HashMap<String, String>();
       mesg.put("mesg","登入成功");

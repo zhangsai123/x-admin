@@ -3,12 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--此文件负责整个mvc中的配置-->
 
@@ -54,16 +55,35 @@
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
 
+<!--    &lt;!&ndash; 配置切面的Bean &ndash;&gt;-->
+<!--    <bean id="sysAspect" class="com.gx.aop.AopClass"/>-->
+<!--    &lt;!&ndash; 配置AOP &ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash; 配置切点表达式  &ndash;&gt;-->
+<!--        <aop:pointcut id="pointcut" expression="execution(public * com.gx.controller.*Controller.*(..))"/>-->
+<!--        &lt;!&ndash; 配置切面及配置 &ndash;&gt;-->
+<!--        <aop:aspect order="1" ref="sysAspect">-->
+<!--            &lt;!&ndash; 前置通知 &ndash;&gt;-->
+<!--            <aop:before method="beforMethod"  pointcut-ref="pointcut" />-->
+<!--            &lt;!&ndash; 后置通知 &ndash;&gt;-->
+<!--            <aop:after method="afterMethod"  pointcut-ref="pointcut"/>-->
+<!--            &lt;!&ndash; 返回通知 &ndash;&gt;-->
+<!--            <aop:after-returning method="afterReturnMethod" pointcut-ref="pointcut" returning="result"/>-->
+<!--            &lt;!&ndash; 异常通知 &ndash;&gt;-->
+<!--            <aop:after-throwing method="afterThrowingMethod" pointcut-ref="pointcut" throwing="ex"/>-->
+<!--            <aop:around method="aroundMethod" pointcut-ref="pointcut"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
 
     <!-- interceptor拦截器 -->
-    <!--<mvc:interceptors>
-        &lt;!&ndash; 多个拦截器，顺序执行 &ndash;&gt;
+    <mvc:interceptors>
+        <!-- 多个拦截器，顺序执行 -->
         <mvc:interceptor>
-            &lt;!&ndash; /**表示所有url包括子url路径 &ndash;&gt;
-            <mvc:mapping path="/**.do"/>
+            <!-- /**表示所有url包括子url路径 -->
+            <mvc:mapping path="/**.html"/>
             <bean class="com.gx.Interceptor.LoginInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>-->
+    </mvc:interceptors>
 
 
 

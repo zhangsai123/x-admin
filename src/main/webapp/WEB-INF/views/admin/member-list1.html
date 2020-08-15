@@ -52,13 +52,16 @@
                                 <thead>
                                     <tr>
                                         <th lay-data="{type:'checkbox'}">ID</th>
-                                        <th lay-data="{field:'id', width:80, sort: true}">ID</th>
-                                        <th lay-data="{field:'username', width:120, sort: true, edit: 'text'}">用户名</th>
-                                        <th lay-data="{field:'email', edit: 'text', minWidth: 150}">邮箱</th>
-                                        <th lay-data="{field:'sex', width:80,templet: '#switchTpl'}">性别</th>
-                                        <th lay-data="{field:'city', edit: 'text', minWidth: 100}">城市</th>
-                                        <th lay-data="{field:'experience', sort: true, edit: 'text'}">积分</th>
-                                        <th lay-data="{field:'dw_xinzhi',templet: function(d){ return d.dw_xinzhi.titel;}}">学校</th></tr>
+                                        <th lay-data="{field:'id',align:'center',sort:true,width:80}">ID</th>
+                                        <th lay-data="{field:'username',align:'center',sort: true,edit:'text',width:120}">用户名</th>
+                                        <th lay-data="{field:'email',align:'center',edit:'text',minWidth: 150}">邮箱</th>
+                                        <th lay-data="{field:'sex',align:'center',width:80,}">性别</th>
+                                        <th lay-data="{field:'city',align:'center',minWidth: 100,edit:'text',}">城市</th>
+                                        <th lay-data="{field:'experience', align:'center',sort: true, edit: 'text'}">积分</th>
+                                        <th lay-data="{field:'dw_xinzhi',align:'center',templet: function(d){ return d.dw_xinzhi.titel;}}">学校</th>
+                                        <th lay-data="{fixed:'right',align:'center', toolbar: '#barDemo', width:150}">操作</th>
+
+                                    </tr>
                                 </thead>
                             </table>
                         </div>
@@ -73,6 +76,14 @@
             <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button > 
             <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
         </div > 
+    </script>
+    <script type="text/html" id="barDemo">
+        <a title="编辑" href="javascript:;" lay-event="update">
+            <i class="layui-icon">&#xe642;</i>
+        </a>
+        <a title="删除" href="javascript:;" lay-event="del">
+            <i class="layui-icon">&#xe640;</i>
+        </a>
     </script>
     <script type="text/html" id="switchTpl">
         <!-- 这里的checked的状态只是演示 -->
@@ -93,8 +104,8 @@
             });
 
         });</script>
-    <script>layui.use('table',
-        function() {
+    <script>
+        layui.use('table',function() {
             var table = layui.table;
 
             //监听单元格编辑
@@ -109,8 +120,7 @@
             });
 
             //头工具栏事件
-            table.on('toolbar(test)',
-            function(obj) {
+            table.on('toolbar(test)',function(obj) {
                 var checkStatus = table.checkStatus(obj.config.id);
                 switch (obj.event) {
                 case 'getCheckData':
@@ -126,7 +136,23 @@
                     break;
                 };
             });
-        });</script>
+
+            //监听行时间
+            table.on('tool(test)', function (obj) {
+                console.log(obj)
+                switch (obj.event) {
+                    case 'update':
+                        layer.msg('更新了数据');
+                        break;
+                    case 'del':
+                        layer.confirm('确认要删除吗？',function(index){
+                            layer.msg('删除了数据');
+                        });
+                        break;
+                };
+            });
+        });
+    </script>
     <script>var _hmt = _hmt || []; (function() {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";

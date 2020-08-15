@@ -26,7 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             } else {
                 //没有登录，跳转到登录界面
-                response.sendRedirect(request.getContextPath() + "/login.do");
+                response.sendRedirect(request.getContextPath() + "/login.html");
             }
 
         }
