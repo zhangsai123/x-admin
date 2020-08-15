@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 //@Aspect
 @Component
-public class AopClass {
+public class AopUtils {
 
     /**
      * 定义切点
