@@ -2,25 +2,32 @@ package com.gx.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.Arrays;
-
 /**
  * @author : Zhangsai
  * @Date : 2020/08/15/16:55
  * @Description :
  */
+//@Aspect
 @Component
 public class AopClass {
 
     /**
+     * 定义切点
+     */
+    @Pointcut("execution(* com.gx..*.*(..))")
+    public void pointCutMethod(){
+    }
+
+    /**
      * 前置通知
      */
-    public void beforMethod(JoinPoint joinPoint) throws IOException {
-        //HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        //HttpServletResponse response =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+
+    public void beforMethod(JoinPoint JoinPoint) throws Throwable {
+        System.out.println("前置通知");
     }
 
     /**
@@ -56,25 +63,25 @@ public class AopClass {
      * 环绕通知(需要携带类型为ProceedingJoinPoint类型的参数)
      * 环绕通知包含前置、后置、返回、异常通知；ProceedingJoinPoin 类型的参数可以决定是否执行目标方法
      * 且环绕通知必须有返回值，返回值即目标方法的返回值
-     * @param point
      */
-    public Object aroundMethod(ProceedingJoinPoint point){
-        Object result = null;
-        String methodName = point.getSignature().getName();
-        try {
-            //前置通知
-            System.out.println("The method "+ methodName+" start. param<"+ Arrays.asList(point.getArgs())+">");
-            //执行目标方法
-            result = point.proceed();
-            //返回通知
-            System.out.println("The method "+ methodName+" end. result<"+ result+">");
-        } catch (Throwable e) {
-            //异常通知
-            System.out.println("this method "+methodName+" end.ex message<"+e+">");
-            throw new RuntimeException(e);
-        }
-        //后置通知
-        System.out.println("The method "+ methodName+" end.");
-        return result;
+    public Object aroundMethod(ProceedingJoinPoint point) throws Throwable {
+
+            Object result = null;
+            String methodName = point.getSignature().getName();
+            try {
+                //前置通知
+                System.out.println("The method "+ methodName+" start. param<"+ Arrays.asList(point.getArgs())+">");
+                //执行目标方法
+                result = point.proceed();
+                //返回通知
+                System.out.println("The method "+ methodName+" end. result<"+ result+">");
+            } catch (Throwable e) {
+                //异常通知
+                System.out.println("this method "+methodName+" end.ex message<"+e+">");
+                throw new RuntimeException(e);
+            }
+            //后置通知
+            System.out.println("The method "+ methodName+" end.");
+            return result;
     }
 }

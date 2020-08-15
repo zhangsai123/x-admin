@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 @Controller
 public class LoginController {
-    @RequestMapping(value = "/submit.action",method = RequestMethod.POST)
+    @RequestMapping(value = "/login.action",method = RequestMethod.POST)
     @ResponseBody
     public Object submit(HttpServletRequest request){
       String username = request.getParameter("username");

@@ -13,6 +13,8 @@
 
     <!--此文件负责整个mvc中的配置-->
 
+
+
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="com.gx"/>
 
@@ -55,25 +57,29 @@
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
 
-<!--    &lt;!&ndash; 配置切面的Bean &ndash;&gt;-->
-<!--    <bean id="sysAspect" class="com.gx.aop.AopClass"/>-->
-<!--    &lt;!&ndash; 配置AOP &ndash;&gt;-->
-<!--    <aop:config>-->
-<!--        &lt;!&ndash; 配置切点表达式  &ndash;&gt;-->
-<!--        <aop:pointcut id="pointcut" expression="execution(public * com.gx.controller.*Controller.*(..))"/>-->
-<!--        &lt;!&ndash; 配置切面及配置 &ndash;&gt;-->
-<!--        <aop:aspect order="1" ref="sysAspect">-->
-<!--            &lt;!&ndash; 前置通知 &ndash;&gt;-->
-<!--            <aop:before method="beforMethod"  pointcut-ref="pointcut" />-->
-<!--            &lt;!&ndash; 后置通知 &ndash;&gt;-->
-<!--            <aop:after method="afterMethod"  pointcut-ref="pointcut"/>-->
-<!--            &lt;!&ndash; 返回通知 &ndash;&gt;-->
-<!--            <aop:after-returning method="afterReturnMethod" pointcut-ref="pointcut" returning="result"/>-->
-<!--            &lt;!&ndash; 异常通知 &ndash;&gt;-->
-<!--            <aop:after-throwing method="afterThrowingMethod" pointcut-ref="pointcut" throwing="ex"/>-->
-<!--            <aop:around method="aroundMethod" pointcut-ref="pointcut"/>-->
-<!--        </aop:aspect>-->
-<!--    </aop:config>-->
+
+
+
+    <!-- 配置切面的Bean -->
+    <bean id="sysAspect" class="com.gx.aop.AopClass"/>
+    <!-- 配置AOP -->
+    <aop:config>
+        <!-- 配置切点表达式  -->
+        <aop:pointcut id="pointcut" expression="execution(public * com.gx.controller.*Controller.*(..))"/>
+        <!-- 配置切面及配置 -->
+        <aop:aspect order="1" ref="sysAspect">
+            <!-- 前置通知 -->
+            <aop:before method="beforMethod"  pointcut-ref="pointcut" />
+            <!-- 后置通知 -->
+            <aop:after method="afterMethod"  pointcut-ref="pointcut"/>
+            <!-- 返回通知 -->
+            <aop:after-returning method="afterReturnMethod" pointcut-ref="pointcut" returning="result"/>
+            <!-- 异常通知 -->
+            <aop:after-throwing method="afterThrowingMethod" pointcut-ref="pointcut" throwing="ex"/>
+            <aop:around method="aroundMethod" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>
+
 
     <!-- interceptor拦截器 -->
     <mvc:interceptors>
@@ -81,6 +87,8 @@
         <mvc:interceptor>
             <!-- /**表示所有url包括子url路径 -->
             <mvc:mapping path="/**.html"/>
+            <mvc:mapping path="/**.action"/>
+            <mvc:exclude-mapping path="/login.html"/>
             <bean class="com.gx.Interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
@@ -88,6 +96,6 @@
 
 
 
-
+    <aop:aspectj-autoproxy/>
 
 </beans>

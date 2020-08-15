@@ -46,7 +46,7 @@
                   var username = data.field.username;
                   var password = data.field.password;
                   $.ajax({
-                      url:"submit.action",//发送请求（提交或读取数据）的地址
+                      url:"login.action",//发送请求（提交或读取数据）的地址
                       dataType:"JSON",//预期服务器返回数据的类型
                       type:"POST",//请求方式
                       data:{username:username,password:password},
