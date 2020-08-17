@@ -118,6 +118,12 @@
       <version>2.0.2</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-core</artifactId>
+      <version>1.3.3</version>
+    </dependency>
+
     <!--MySQL 驱动包-->
     <dependency>
       <groupId>mysql</groupId>
@@ -200,7 +206,7 @@
 
   <build>
     <finalName>x-admin</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --></pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -231,7 +237,39 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+
+        <plugin>
+          <groupId>org.mybatis.generator</groupId>
+          <artifactId>mybatis-generator-maven-plugin</artifactId>
+          <version>1.3.5</version>
+          <configuration>
+            <!-- 在控制台打印执行日志 -->
+            <verbose>true</verbose>
+            <!-- 重复生成时会覆盖之前的文件-->
+            <overwrite>true</overwrite>
+            <configurationFile>src/main/resources/spring/generatorConfig.xml</configurationFile>
+          </configuration>
+          <!-- 数据库连接选择8.0以上的，因为用的mysql8.0-->
+          <dependencies>
+            <dependency>
+              <groupId>mysql</groupId>
+              <artifactId>mysql-connector-java</artifactId>
+              <version>8.0.11</version>
+            </dependency>
+          </dependencies>
+        </plugin>
       </plugins>
-    </pluginManagement>
+      <resources>
+        <resource>
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>*.xml</include>
+            <include>**/*.xml</include>
+            <include>**/*.properties</include>
+            <include>**/*.ini</include>
+          </includes>
+          <filtering>false</filtering>
+        </resource>
+      </resources>
   </build>
 </project>
