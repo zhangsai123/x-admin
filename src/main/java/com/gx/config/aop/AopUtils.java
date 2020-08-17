@@ -1,4 +1,4 @@
-package com.gx.aop;
+package com.gx.config.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -59,7 +59,7 @@
 
 
     <!-- 配置切面的Bean -->
-    <bean id="sysAspect" class="com.gx.aop.AopUtils"/>
+    <bean id="sysAspect" class="com.gx.config.aop.AopUtils"/>
     <!-- 配置AOP -->
     <aop:config>
         <!-- 配置切点表达式  -->
