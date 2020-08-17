@@ -85,9 +85,9 @@
         <mvc:interceptor>
             <!-- /**表示所有url包括子url路径 -->
             <mvc:mapping path="/**.html"/>
-            <mvc:mapping path="/**.action"/>
+<!--            <mvc:mapping path="/**.action"/>-->
             <mvc:exclude-mapping path="/login.html"/>
-            <bean class="com.gx.Interceptor.LoginInterceptor"/>
+            <bean class="com.gx.config.Interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

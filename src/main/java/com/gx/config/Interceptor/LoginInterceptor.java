@@ -1,4 +1,4 @@
-package com.gx.Interceptor;
+package com.gx.config.Interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
