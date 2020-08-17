@@ -16,7 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = {"classpath:spring/applicationContext.xml","classpath:spring/spring-mvc.xml"})
+@ContextConfiguration(locations = {"classpath:spring/applicationContext.xml", "classpath:spring/springMvc.xml"})
 public class TestClass {
     @Test
     public void DataSourceTest(){

@@ -13,8 +13,6 @@
 
     <!--此文件负责整个mvc中的配置-->
 
-
-
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="com.gx"/>
 
