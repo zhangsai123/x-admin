@@ -238,9 +238,6 @@
           <version>2.8.2</version>
         </plugin>
 
-
-
-
         <plugin>
           <groupId>org.mybatis.generator</groupId>
           <artifactId>mybatis-generator-maven-plugin</artifactId>
