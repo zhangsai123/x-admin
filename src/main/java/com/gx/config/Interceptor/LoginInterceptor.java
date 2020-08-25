@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //获取登入的url
-        //判断用户是否登录
         HttpSession session=request.getSession(true);
         if(session.getAttribute("user") == null){
             System.out.println("没有session");

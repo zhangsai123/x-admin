@@ -38,10 +38,6 @@
     </mvc:annotation-driven>
 
 
-    <!--静态资源映射-->
-    <mvc:resources location="/style/js/" mapping="/js/**"/>
-    <mvc:resources location="/style/images/" mapping="/img/**"/>
-    <mvc:resources location="/style/css/" mapping="/css/**"/>
 
     <!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
     <mvc:default-servlet-handler />

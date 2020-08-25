@@ -18,7 +18,6 @@
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/LayUI/*</url-pattern>
-
     </servlet-mapping>
 
 
