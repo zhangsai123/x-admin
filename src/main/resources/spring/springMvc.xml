@@ -49,10 +49,8 @@
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
     <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/views/admin/"/><!--设置html文件的目录位置-->
-        <property name="suffix" value=".html"/>
-        <property name="exposeContextBeansAsAttributes" value="true"/>
+        <property name="prefix" value="/WEB-INF/views/jsp/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 
@@ -84,9 +82,9 @@
         <!-- 多个拦截器，顺序执行 -->
         <mvc:interceptor>
             <!-- /**表示所有url包括子url路径 -->
-            <mvc:mapping path="/**.html"/>
+            <mvc:mapping path="/**"/>
             <mvc:mapping path="/**/*.action" />
-            <mvc:exclude-mapping path="/login.html"/>
+            <mvc:exclude-mapping path="/login"/>
             <mvc:exclude-mapping path="/login.action"/>
             <bean class="com.gx.config.Interceptor.LoginInterceptor"/>
         </mvc:interceptor>

@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = {""})
 public class DefaultController {
-    @RequestMapping(value = "/login.html")
+    @RequestMapping(value = {"/login"})
     public String login(){
         return "login";
     }
 
-    @RequestMapping(value = "/index.html")
+    @RequestMapping(value = "/index")
     public String index(){
         return "index";
     }
 
-    @RequestMapping(value = "welcome.html")
+    @RequestMapping(value = "welcome")
     public String welcome(){
         return "welcome";
     }
@@ -31,13 +31,13 @@ public class DefaultController {
     public String welcome1(){return "welcome1";}
 
     /** 会员列表（静态表格）*/
-    @RequestMapping(value = "/member-list.html")
+    @RequestMapping(value = "/member-list")
     public String memberList(){
         return "member-list";
     }
 
     /** 会员列表（静态表格）*/
-    @RequestMapping(value = "/member-list1.html")
+    @RequestMapping(value = "/member-list1")
     public String memberList1(){
         return "member-list1";
     }

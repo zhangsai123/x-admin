@@ -7,14 +7,20 @@
     <display-name>Archetype Created Web Application</display-name>
 
     <!--把applicationContext.xml加入到配置文件中-->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/applicationContext.xml</param-value>
     </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/LayUI/*</url-pattern>
+
+    </servlet-mapping>
+
 
     <!--配置springmvc DispatcherServlet-->
     <servlet>
@@ -31,10 +37,13 @@
 
     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
-        <url-pattern>*.do</url-pattern>
-        <url-pattern>*.action</url-pattern>
-        <url-pattern>*.html</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>springMVC</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 
     <!-- 解决乱码的过滤器 -->
     <filter>
@@ -56,12 +65,12 @@
 
 
     <welcome-file-list>
-        <welcome-file>login.html</welcome-file>
+        <welcome-file>login</welcome-file>
     </welcome-file-list>
 
-    <error-page>
-        <location>/WEB-INF/views/admin/error.html</location>
-    </error-page>
+<!--    <error-page>-->
+<!--        <location>/WEB-INF/views/admin/error.html</location>-->
+<!--    </error-page>-->
 
 
 </web-app>
