@@ -60,7 +60,7 @@
                     success:function(data){
                         console.log(data);
                         if (data.mesg == "登入成功"){
-                            location.href='index.html';
+                            location.href='index';
                         }
                     },
                     error:function(){}

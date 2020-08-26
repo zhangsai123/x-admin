@@ -27,7 +27,7 @@ public class DefaultController {
         return "welcome";
     }
 
-    @RequestMapping(value = "/welcome1.html")
+    @RequestMapping(value = "/welcome1")
     public String welcome1(){return "welcome1";}
 
     /** 会员列表（静态表格）*/
