@@ -91,12 +91,20 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
+                        <a onclick="xadmin.add_tab('图标库','https://www.layui.com/doc/element/icon.html',true)">
+                            <%--<i class="iconfont">&#xe6a7;</i>--%>
+                            <i class="iconfont left-nav-li" lay-tips="图标库">&#xe613;</i>
+                            <cite>图标库</cite>
+                        </a>
+                    </li>
+                    <li>
                         <a onclick="xadmin.add_tab('会员列表(动态表格)','member-list1',true)">
-<%--                            <i class="iconfont">&#xe6a7;</i>--%>
-                            <i class="iconfont left-nav-li" lay-tips="会员列表(动态表格)">&#xe6b8;</i>
+                            <%--<i class="iconfont">&#xe6a7;</i>--%>
+                            <i class="iconfont left-nav-li" lay-tips="会员列表(动态表格)">&#xe613;</i>
                             <cite>会员列表(动态表格)</cite>
                         </a>
                     </li>
+
 <%--                    <li>--%>
 <%--                        <a href="javascript:;">--%>
 <%--                            <i class="iconfont left-nav-li" lay-tips="会员管理">&#xe6b8;</i>--%>
