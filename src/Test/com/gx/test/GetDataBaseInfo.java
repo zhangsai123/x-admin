@@ -32,7 +32,6 @@ public class GetDataBaseInfo {
 
     @Test
     public void DBInfo() throws SQLException {
-
         System.out.println(GetConnection().getCatalog());
         ResultSet rs = null;
         System.out.println("数据库已知的用户: "+ getMetaData().getUserName());
