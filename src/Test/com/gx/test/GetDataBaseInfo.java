@@ -15,9 +15,11 @@ import java.sql.SQLException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = {"classpath:spring/applicationContext.xml", "classpath:spring/springMvc.xml"})
+@ContextConfiguration(locations = {"classpath:spring/applicationContext.xml", "classpath:spring/redisConfig.xml"})
 public class GetDataBaseInfo {
 
+    //"classpath:spring/redisConfig.xml"
+    //"classpath:spring/springMvc.xml",
     @Autowired
     DruidDataSource dataSource;
 
