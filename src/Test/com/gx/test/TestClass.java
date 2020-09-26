@@ -23,6 +23,8 @@ public class TestClass {
         ApplicationContext ApplicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext.xml");
         SqlSessionFactory SqlSessionFactory = (org.apache.ibatis.session.SqlSessionFactory) ApplicationContext.getBean("sqlSessionFactory");
         System.out.println(SqlSessionFactory);
+
+
     }
 
 }
