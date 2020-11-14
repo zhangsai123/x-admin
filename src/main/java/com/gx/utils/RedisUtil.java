@@ -1,11 +1,13 @@
-package com.gx.config.Redis;
+package com.gx.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -13,18 +15,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-//@Service
-public class RedisService {
+@Component
+public class RedisUtil {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
-    //@Autowired
+    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    public RedisService(RedisTemplate<String, Object> redisTemplate) {
+    public RedisUtil(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-
 
 
     /**
@@ -579,9 +580,8 @@ public class RedisService {
 
     /**
      * 向有序集合添加一个成员的
-     *
+     * <p>
      * ZADD key score1 member1 [score2 member2]
-     *
      */
     public boolean zadd(String key, Object member, double score, long time) {
         try {
@@ -596,9 +596,8 @@ public class RedisService {
     }
 
     /**
-     * 	ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]
-     通过分数返回有序集合指定区间内的成员
-     *
+     * ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]
+     * 通过分数返回有序集合指定区间内的成员
      */
     public Set<Object> zRangeByScore(String key, double minScore, double maxScore) {
         try {
@@ -610,9 +609,8 @@ public class RedisService {
     }
 
     /**
-     * 	ZSCORE key member
-     返回有序集中，成员的分数值
-     *
+     * ZSCORE key member
+     * 返回有序集中，成员的分数值
      */
     public Double zscore(String key, Object member) {
         try {
@@ -624,8 +622,7 @@ public class RedisService {
     }
 
     /**
-     * 	ZRANK key member 返回有序集合中指定成员的索引
-     *
+     * ZRANK key member 返回有序集合中指定成员的索引
      */
     public Long zrank(String key, Object member) {
         try {
@@ -638,7 +635,6 @@ public class RedisService {
 
     /**
      * Zscan 迭代有序集合中的元素（包括元素成员和元素分值）
-     *
      */
     public Cursor<ZSetOperations.TypedTuple<Object>> zscan(String key) {
         try {
@@ -649,7 +645,6 @@ public class RedisService {
             return null;
         }
     }
-
 
 
 }
