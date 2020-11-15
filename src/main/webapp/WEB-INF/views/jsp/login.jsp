@@ -46,10 +46,6 @@
             var form = layui.form;
             //监听提交
             form.on('submit(login)', function(data){
-                // alert(888)
-                // layer.msg(JSON.stringify(data.field),function(){
-                //     location.href='index.do'
-                // });
                 var username = data.field.username;
                 var password = data.field.password;
                 $.ajax({
@@ -58,9 +54,8 @@
                     type:"POST",//请求方式
                     data:{username:username,password:password},
                     success:function(data){
-                        console.log(data);
-                        if (data.mesg == "登入成功"){
-                            location.href='index';
+                        if (data.code == "200"){
+                            location.href="index";
                         }
                     },
                     error:function(){}

@@ -2,7 +2,6 @@ package com.gx.config.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -18,7 +17,7 @@ public class AopUtils {
     /**
      * 定义切点
      */
-    @Pointcut("execution(* com.gx..*.*(..))")
+    //@Pointcut("execution(* com.gx..*.*(..))")
     public void pointCutMethod(){
     }
 

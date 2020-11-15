@@ -5,6 +5,10 @@ import com.gx.utils.textUtils.StringUtils;
 
 import java.util.HashMap;
 
+/**
+ * 操作消息提醒
+ *
+ */
 public class AjaxResultUtil extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 

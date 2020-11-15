@@ -66,12 +66,6 @@
     <welcome-file-list>
         <welcome-file>login</welcome-file>
     </welcome-file-list>
-
-<!--    <error-page>-->
-<!--        <location>/WEB-INF/views/admin/error.html</location>-->
-<!--    </error-page>-->
-
-
 </web-app>
 
 

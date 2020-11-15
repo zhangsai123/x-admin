@@ -1,5 +1,9 @@
 package com.gx.utils;
 
+/**
+ * 返回状态码
+ *
+ */
 public class HttpStatusUtil {
     /**
      * 操作成功

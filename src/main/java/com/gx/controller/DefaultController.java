@@ -13,33 +13,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = {""})
 public class DefaultController {
     @RequestMapping(value = {"/login"})
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @RequestMapping(value = "/index")
-    public String index(){
+    public String index() {
         return "index";
     }
 
-    @RequestMapping(value = "welcome")
-    public String welcome(){
+    @RequestMapping(value = "/welcome")
+    public String welcome() {
         return "welcome";
     }
 
     @RequestMapping(value = "/welcome1")
-    public String welcome1(){return "welcome1";}
+    public String welcome1() {
+        return "welcome1";
+    }
 
-    /** 会员列表（静态表格）*/
+    /**
+     * 会员列表（静态表格）
+     */
     @RequestMapping(value = "/member-list")
-    public String memberList(){
+    public String memberList() {
         return "member-list";
     }
 
-    /** 会员列表（静态表格）*/
+    /**
+     * 会员列表（静态表格）
+     */
     @RequestMapping(value = "/member-list1")
-    public String memberList1(){
+    public String memberList1() {
         return "member-list1";
     }
+
+    /**
+     * 系统信息
+     */
+    @RequestMapping(value = "/systeminfo")
+    public String systeminfo() {
+        return "systeminfo";
+    }
+
 
 }

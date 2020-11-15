@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="LayUI/css/font.css">
     <link rel="stylesheet" href="LayUI/css/xadmin.css">
 
-    <%--  页面Loading弹出层需要使用layer.css  --%>
-    <link rel="stylesheet" href="LayUI/lib/layui/css/modules/layer/default/layer.css">
 </head>
 <body>
 <div class="layui-fluid" id="app">
@@ -135,41 +133,61 @@
                 </div>
             </div>
         </div>
-
-        <template id="sysFiles">
-            <div class="layui-col-md12">
-                <div class="layui-card">
-                    <div class="layui-card-header">磁盘信息</div>
-                    <div class="layui-card-body ">
-                        <table class="layui-table">
-                            <tbody>
-                            <tr>
-                                <th>盘符路径</th>
-                                <th>盘符类型</th>
-                                <th>文件系统类型</th>
-                                <th>总大小</th>
-                                <th>已用空间</th>
-                                <th>可用空间</th>
-                                <th>已用百分比</th>
-                            </tr>
-                            <tr v-for="(sysFiles,index) in sysFiles">
-                                <th>{{sysFiles.dirName}}</th>
-                                <th>{{sysFiles.typeName}}</th>
-                                <th>{{sysFiles.sysTypeName}}</th>
-                                <th>{{sysFiles.total}}</th>
-                                <th>{{sysFiles.used}}</th>
-                                <th>{{sysFiles.free}}</th>
-                                <th>{{sysFiles.usage}}%</th>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">系统信息</div>
+                <div class="layui-card-body ">
+                    <table class="layui-table">
+                        <tbody>
+                        <tr>
+                            <th>xxx版本</th>
+                            <td>1.0.180420</td>
+                        </tr>
+                        <tr>
+                            <th>服务器地址</th>
+                            <td>x.xuebingsi.com</td>
+                        </tr>
+                        <tr>
+                            <th>操作系统</th>
+                            <td>WINNT</td>
+                        </tr>
+                        <tr>
+                            <th>运行环境</th>
+                            <td>Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9</td>
+                        </tr>
+                        <tr>
+                            <th>PHP版本</th>
+                            <td>5.6.27</td>
+                        </tr>
+                        <tr>
+                            <th>PHP运行方式</th>
+                            <td>cgi-fcgi</td>
+                        </tr>
+                        <tr>
+                            <th>MYSQL版本</th>
+                            <td>5.5.53</td>
+                        </tr>
+                        <tr>
+                            <th>ThinkPHP</th>
+                            <td>5.0.18</td>
+                        </tr>
+                        <tr>
+                            <th>上传附件限制</th>
+                            <td>2M</td>
+                        </tr>
+                        <tr>
+                            <th>执行时间限制</th>
+                            <td>30s</td>
+                        </tr>
+                        <tr>
+                            <th>剩余空间</th>
+                            <td>86015.2M</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </template>
-
-
+        </div>
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-header">开发团队</div>
@@ -191,55 +209,43 @@
             </div>
         </div>
 <%--        <style id="welcome_style"></style>--%>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由张赛提供技术支持。</blockquote>
+        </div>
     </div>
 </div>
 </div>
 
-<script src="vue/vue.js" charset="utf-8" type="text/javascript"></script>
-<script src="LayUI/jquery/3.2.1/jquery.min.js" charset="utf-8" type="text/javascript"></script>
+
 <script src="LayUI/lib/layui/layui.js" charset="utf-8"></script>
-<script src="LayUI/lib/layui/lay/modules/layer.js" charset="utf-8" type="text/javascript"></script>
-<script src="LayUI/js/xadmin.js" charset="utf-8" type="text/javascript"></script>
+<script src="LayUI/js/xadmin.js" type="text/javascript"></script>
+<script src="vue/vue.js" type="text/javascript"></script>
+<script type="text/javascript" src="LayUI/jquery/3.2.1/jquery.min.js"></script>
 <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
 <!--[if lt IE 9]>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
 <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script>
-    //磁盘信息
-    var sysFiles = Vue.extend({
-        template:'#sysFiles'
-    })
-
     var app = new Vue({
         el: "#app",
         data: {
-            name:"zhangsai",
-            sysFiles:[],
         },
         create: function () {
         },
         mounted: function () {
-            //页面上的Loading,弹出层
-            var loading = layer.load(0, {shade:0.2,time:0});
-           //var loading = layer.msg('正在加载', {icon: 16, shade: 0.3, time:0});
-           var _this = this;
             $.ajax({
                 url:"server/getSystemInfo.action",
                 dataType:"JSON",
                 type:"GET",
                 data:"",
                 success:function (data) {
-                    _this.sysFiles = data.data.sysFiles;
-                    layer.close(loading);
+                    console.log(data);
                 },
                 error:function () {
 
                 }
             })
-        },
-        components:{
-            sysFiles
         },
         methods: {}
     })
